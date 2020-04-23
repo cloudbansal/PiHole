@@ -1,2 +1,2 @@
 # PiHole Setup
-Files I used for setting up the PiHole Device
+Some setup files for setting up the PiHole Device
