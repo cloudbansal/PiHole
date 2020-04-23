@@ -1,0 +1,7 @@
+#!/bin/bash
+wget -q https://www.internic.net/domain/named.root -O /tmp/root.hints
+if grep -q ROOT-SERVERS /tmp/root.hints ;then
+  mv -f /tmp/root.hints /etc/unbound/root.hints && chmod a+r /var/lib/unbound/root.hints
+  unbound-anchor -a /var/lib/unbound/root.anchor -c /etc/unbound/icannbundle.pem
+  unbound-control reload
+fi
