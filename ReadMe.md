@@ -1,5 +1,5 @@
 # PiHole Setup
-Setting up a recursive PiHole setup at home
+Setting up a recursive PiHole DNS Server at home
 
 ## Installing Unbound
 (Using the guide from https://docs.pi-hole.net/guides/unbound/)
