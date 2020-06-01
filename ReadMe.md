@@ -4,12 +4,16 @@ Setting up a recursive PiHole setup at home
 ## Installing Unbound
 (Using the guide from https://docs.pi-hole.net/guides/unbound/)
 We will use unbound, a secure open-source recursive DNS server primarily developed by NLnet Labs, VeriSign Inc., Nominet, and Kirei. The first thing you need to do is to install the recursive DNS resolver:
+
 `sudo apt install unbound`
-Important: Download the current root hints file (the list of primary root servers which are serving the domain "." - the root domain). ```
+
+Important: Download the current root hints file (the list of primary root servers which are serving the domain "." - the root domain).
+
 ```
 wget -O root.hints https://www.internic.net/domain/named.root
 sudo mv root.hints /var/lib/unbound/
 ```
+
 ### Setting up DNSSec
 Using the guide from (https://nlnetlabs.nl/documentation/unbound/howto-anchor).
 
