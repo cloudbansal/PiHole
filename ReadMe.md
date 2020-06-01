@@ -56,8 +56,35 @@ The first command should give a status report of SERVFAIL and no IP address. The
 Configure Pi-hole
 Finally, configure Pi-hole to use your recursive DNS server by specifying 127.0.0.1#5335 as the Custom DNS (IPv4)
 
-## Setting up a cron job to update root hints file
+### Setting up a cron job to update root hints file
 Create a monthly cron job with following settings from following file to update root hints file automatically
 
 `/etc/cron.monthly/update-unbound-hints`
 
+## Adding additional lists
+Use the utility https://github.com/jacklul/pihole-updatelists
+
+### Install
+This will install this script globally as pihole-updatelists and add systemd service and timer.
+```
+wget -q -O - https://raw.githubusercontent.com/jacklul/pihole-updatelists/master/install.sh | sudo bash
+```
+### Recommended lists:
+
+| List | URL |
+|----------|--------------------------|
+| ADLISTS_URL | https://v.firebog.net/hosts/lists.php?type=tick |
+| WHITELIST_URL | https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt |
+| REGEX_BLACKLIST_URL | https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list |
+
+### Configuration
+We will disable updating gravity automatically. Use the configuration file from : `/etc/pihole-updatelists.conf`
+
+### Changing the schedule
+
+By default, the script runs at random time (between 03:00 and 04:00) on Saturday, to change it you'll have to override [timer unit](https://www.freedesktop.org/software/systemd/man/systemd.timer.html) file. 
+Use the settings from the file - `/etc/systemd/system/pihole-updatelists.timer`
+
+After changing the file restart the pihole-updatelists service
+
+`sudo service pihole-updatelists restart`
