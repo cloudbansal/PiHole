@@ -1,8 +1,19 @@
 # PiHole Setup
 Setting up a recursive PiHole DNS Server at home
 
+## Installing PiHole
+
+Use the latest guide available on https://pi-hole.net/
+
+```
+wget -O basic-install.sh https://install.pi-hole.net
+sudo bash basic-install.sh
+```
+
 ## Installing Unbound
-(Using the guide from https://docs.pi-hole.net/guides/unbound/)
+
+* Using the guide from https://docs.pi-hole.net/guides/unbound/
+
 We will use unbound, a secure open-source recursive DNS server primarily developed by NLnet Labs, VeriSign Inc., Nominet, and Kirei. The first thing you need to do is to install the recursive DNS resolver:
 
 `sudo apt install unbound`
@@ -92,3 +103,10 @@ Use the settings from the file - `/etc/systemd/system/pihole-updatelists.timer`
 After changing the file restart the pihole-updatelists service
 
 `sudo service pihole-updatelists restart`
+
+## Blacklists
+In addition to default blacklists and Firebog lists, add following url's in blacklists:
+* https://dbl.oisd.nl/
+
+## log2ram
+To increase the lifespan of the SD card install log2ram from https://github.com/azlux/log2ram
